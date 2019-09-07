@@ -1,0 +1,29 @@
+.logo{
+    height: 3.8vmax;
+    width: 4.5vmax;
+    padding: auto;
+    margin-top: 0;
+    padding-right: 10px;
+}
+.google{
+    background-color: red;
+}
+
+
+.sides{
+    border: 2px solid aqua;
+    margin-top: 8px;
+    border-radius: 10px;
+}
+h4{
+    text-align: center
+}
+
+
+.heading{
+    color: aqua
+}
+   
+
+
+

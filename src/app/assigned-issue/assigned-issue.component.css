@@ -1,0 +1,41 @@
+#home{
+    background-color:aqua;
+}
+.blue{
+    background-color: blue;
+    color: azure
+}
+
+
+.font{
+    font-size: 3.7vmin;
+    text-align: center;
+}
+
+.controller{
+    background-color: blue;
+    font-size: 3.7vmin;
+    width: 100%;
+    
+}
+
+.arrow{
+    height: 20px;
+    width: 3.5vmin;
+    border-radius: 30%;
+}
+
+.logo{
+    height: 3.8vmax;
+    width: 4.5vmax;
+    padding: auto;
+    margin-top: 0;
+    padding-right: 10px;
+}
+.gap{
+    border: 2px solid lightseagreen;
+    border-radius: 20%;
+    font-size: 1.2em;
+    margin-right: 40px;
+    margin-left: 20px;
+}

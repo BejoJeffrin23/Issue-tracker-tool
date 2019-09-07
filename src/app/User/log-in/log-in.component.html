@@ -1,0 +1,61 @@
+<div>
+  <nav class="navbar navbar-expand-md navbar-light" style="background-color: aqua">
+
+    <a class="navbar-brand" href="/" style="color: black"><img src="assets/logo.png" class="logo"><b>ISSUE
+        TRACKER</b></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav">
+
+        <li class="nav-item">
+
+          <a class="nav-link" (click)="goToSignUp()" style="color: gray">
+            <h5>Sign-Up</h5>
+          </a>
+
+        </li>
+
+      </ul>
+
+    </div>
+
+  </nav>
+
+  <div class="row p-0 m-0 " style="background-image: url('assets/pic.jpeg');height:100vh;">
+
+    <div class="col-sm"></div>
+
+
+    <div class="col-sm p-5 sides">
+
+      <h2 style="color: aqua;text-align: center">Please Log in</h2>
+
+      <label for="inputEmail" class="sr-only">Email address</label>
+
+      <input type="email" id="inputEmail" class="form-control" [(ngModel)]="email" placeholder="Email address" required
+        autofocus>
+
+      <br>
+
+      <label for="inputPassword" class="sr-only">Password</label>
+
+      <input type="password" id="inputPassword" class="form-control" [(ngModel)]="password" placeholder="Password"
+        required>
+
+      <br>
+
+      <button class="btn btn-lg btn-primary btn-block" type="button" (click)="signinFunction()">Log in</button>
+
+    </div>
+
+    <div class="col-sm"></div>
+
+  </div>
+</div>

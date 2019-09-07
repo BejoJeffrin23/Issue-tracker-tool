@@ -1,0 +1,113 @@
+<div style="background-color:black;height: 100%; ">
+  <nav class="navbar navbar-expand-lg navbar-light " id="home">
+    <a class="navbar-brand" href="#"><img src="assets/logo.png" class="logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="('/assign')" style="font-size: 1.2em">Dash board <span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="('/reported')" style="font-size: 1.2em">My Issues </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="('/home')" style="font-size: 1.2em">All Issues </a>
+        </li>
+        <li class="nav-item active ">
+          <button class="btn btn-outline-success my-2 my-sm-0 blue gap" type="submit" [routerLink]="('/create')">Add
+            Issue</button>
+        </li>
+
+
+      </ul>
+      <button class="btn btn-outline-success my-2 my-sm-0 blue" type="submit" (click)="logout()">LogOut</button>
+    </div>
+  </nav>
+  <br>
+  <div style="text-align: center">
+    <button class="edit" (click)="edit()">Edit Issue</button>
+    <button class="delete" (click)="delete()">Delete Issue</button>
+    <button class="watch" (click)="watch()">+Watch list</button>
+
+  </div>
+  <div class="container">
+
+    <ul class="list-group ">
+      <label>
+        <h4 class="bl">Issue Title</h4>
+      </label>
+      <li class="list-group-item center" style="background-color:rgb(182, 228, 255)">
+        <h5>{{issued.issueTitle}}</h5>
+      </li>
+      <label>
+        <h4 class="bl">Reporter Name</h4>
+      </label>
+      <li class="list-group-item" style="background-color:rgb(182, 228, 255)">
+        <h5>{{issued.reporterName}}</h5>
+      </li>
+      <label>
+        <h4 class="bl">Description</h4>
+      </label>
+      <li class="list-group-item" style="background-color:rgb(182, 228, 255)">
+        <h5 [innerHtml]="issued.description"></h5>
+      </li>
+      <label>
+        <h4 class="bl">Image</h4>
+      </label>
+      <li class="list-group-item" style="background-color:rgb(182, 228, 255)"><img class="image"
+          src="http://localhost:3000/{{issued.productImage}}"></li>
+      <label>
+        <h4 class="bl">Status</h4>
+      </label>
+      <li class="list-group-item" style="background-color:rgb(182, 228, 255)">
+        <h5>Status : {{issued.status}}</h5>
+      </li>
+      <label>
+        <h4 class="bl">Assignee</h4>
+      </label>
+      <li class="list-group-item" style="background-color:rgb(182, 228, 255)">
+        <h5>Assignee : {{issued.assignee}}</h5>
+      </li>
+      <div>
+        <label>
+          <h4 class="bl">Watchers</h4>
+        </label>
+        <span  *ngFor="let x of issued.watchers" class="list-group-item" style="background-color:rgb(182, 228, 255)">
+          <h5>{{x.watcher}}</h5>
+        </span>
+      </div>
+    </ul>
+    <br>
+
+    <div *ngFor="let Comment of issued.comments">
+      <div>
+        <label>
+          <h4 class="bl">Comments</h4>
+        </label>
+        <div style="border:1px solid #1cd3a2">
+          <h5 style="color:#1cd3a2;margin-left:10vmin;margin-top:10px"><b>{{Comment.name}}</b></h5>
+          <h6 style="color: gray;margin-left:11vmin">{{Comment.date |  date}}</h6>
+          <h5 style="margin-left:12vmin;color:lavenderblush"><b>{{Comment.comment}}</b></h5>
+          <br>
+        </div>
+
+        <br>
+      </div>
+    </div>
+
+    <div class="form-group ">
+
+      <label class="tt">
+        <h4 class="bl">Comment box</h4>
+      </label>
+      <input style="background-color:rgb(182, 228, 255)" class="form-control input-box validate box"
+        [(ngModel)]="comment" [ngModelOptions]="{standalone: true}" required>
+      <button class="comment" (click)="Comment()">comment</button>
+    </div>
+
+  </div>

@@ -1,0 +1,69 @@
+<div style="background-color: black;height: 100vh;">
+
+  <nav class="navbar navbar-expand-lg navbar-light " id="home">
+    <a class="navbar-brand" href="#"><img src="assets/logo.png" class="logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="('/assign')" style="font-size: 1.2em">Dash board <span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="('/home')" style="font-size: 1.2em">All Issues</a>
+        </li>
+        <li class="nav-item active">
+          <button class="btn btn-outline-success my-2 my-sm-0 blue gap" type="submit" [routerLink]="('/create')">Add
+            Issue</button>
+        </li>
+
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="key"
+            [(ngModel)]="key">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </ul>
+      <button class="btn btn-outline-success my-2 my-sm-0 blue" type="submit" (click)="logout()">LogOut</button>
+    </div>
+  </nav>
+  <br>
+  <div *ngIf="array.length==0"
+    style="background-image: url(assets/image2.jpg);background-repeat: no-repeat;height:100vh;background-position: center">
+    <h1 style="color: blanchedalmond;text-align: center">No IssUes Reported by {{fullName}}...</h1>
+
+  </div>
+  <div *ngIf="array.length>0">
+    <table class="table table-striped table-bordered table-dark table-hover">
+      <thead>
+        <tr>
+          <th class="font">Title <img src="assets/arrowup.png" class="arrow" (click)="ta()"> <img
+              src="assets/arrowdown.png" class="arrow" (click)="td()"></th>
+          <th class="font">Status <img src="assets/arrowup.png" class="arrow" (click)="sa()"> <img
+              src="assets/arrowdown.png" class="arrow" (click)="sd()"></th>
+          <th class="font">Reporter <img src="assets/arrowup.png" class="arrow" (click)="ra()"> <img
+              src="assets/arrowdown.png" class="arrow" (click)="rd()"></th>
+          <th class="font">Date <img src="assets/arrowup.png" class="arrow" (click)="ca()"> <img
+              src="assets/arrowdown.png" class="arrow" (click)="cd()"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let x of array |search:'issueTitle,reporterName,status,createdOn': key| paginate: { itemsPerPage: count, currentPage: p }"
+          [ngStyle]="{'background-color':setColor(x.status)}" routerLink="/{{x.issueId}}/view">
+          <td class="font" style="width: 30%">{{x.issueTitle}}</td>
+          <td class="font" style="width: 20%">{{x.status}}</td>
+          <td class="font" style="width: 30%">{{x.reporterName}}</td>
+          <td class="font" style="width: 20%">{{x.createdOn | date:'dd/MM/yyyy'}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="controller">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

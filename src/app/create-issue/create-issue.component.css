@@ -1,0 +1,52 @@
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+
+#home{
+    background-color:aqua;
+}
+.blue{
+    background-color: blue;
+    color: azure
+}
+app-ngx-editor[placeholder]{
+
+    color:blueviolet;
+     height:100vh;
+ }
+ .box{
+     margin-left:5vmin;
+     width: auto;
+     margin-right:5vmin; 
+ }
+
+ .button{
+     margin-left:40px;
+     margin-bottom:90px;
+     background-color: blue;
+ }
+
+ .image{
+     height: 50vmin;
+     width:80vmin;
+ }
+ .logo{
+    height: 3.8vmax;
+    width: 4.5vmax;
+    padding: auto;
+    margin-top: 0;
+    padding-right: 10px;}
+
+   .tt{
+    color:blue;
+    font-weight:bolder;
+    font-size: 1.2em
+   }
+
+   .heading{
+       border: 2px solid blue;
+       background-color: blueviolet
+      
+   }
+   .border{
+       border: 2px solid aqua
+   }

@@ -1,0 +1,89 @@
+<div style="background-color:mistyrose">
+  <nav class="navbar navbar-expand-lg navbar-light " id="home">
+    <a class="navbar-brand" href="#"><img src="assets/logo.png" class="logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="('/assign')" style="font-size: 1.2em">Dash board <span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="('/reported')" style="font-size: 1.2em">My Issues </a>
+        </li>
+      </ul>
+      <button class="btn btn-outline-success my-2 my-sm-0 blue" type="submit" (click)="logout()">LogOut</button>
+    </div>
+  </nav>
+  <br>
+  <div class="col-12 text-center heading">
+    <h2 class="title">Edit Issue</h2>
+
+  </div>
+  <form #editIssueForm="ngForm" (ngSubmit)="editIssue()" enctype="multipart/form-data">
+
+    <div class="form-group box">
+
+      <label class="tt">Issue Title</label>
+      <input style="background-color:rgb(182, 228, 255)" class="form-control input-box validate"
+        [(ngModel)]="issued.issueTitle" [ngModelOptions]="{standalone: true}" required>
+
+    </div>
+
+    <div class="form-group box">
+      <label class="tt">Description</label>
+      <app-ngx-editor style="background-color:rgb(182, 228, 255)" [placeholder]="'Enter description here...'"
+        [config]="editorConfig" [spellcheck]="true" [(ngModel)]="issued.description" #issueDescription="ngModel"
+        [ngModelOptions]="{standalone: true}" class="descrip"></app-ngx-editor>
+    </div>
+
+    <div class="form-group box">
+      <label class="tt">Image</label>
+      <input type="file" (change)="Selected($event)">
+      <div style="background-color:rgb(182, 228, 255)" [hidden]="!imagePreview">
+        <img class="image" src="{{imagePreview}}">
+      </div>
+      <div style="background-color:rgb(182, 228, 255)" [hidden]="imagePreview">
+        <img class="image" src="http://localhost:3000/{{issued.productImage}}">
+      </div>
+    </div>
+
+    <div class="form-group box">
+      <label class="tt">Status</label>
+      <select style="background-color:rgb(182, 228, 255)" [(ngModel)]="issued.status"
+        class="custom-select form-control input-box" [ngModelOptions]="{standalone: true}" required>
+        <option selected>Choose...</option>
+        <option value="Backlog">backlog</option>
+        <option value="In-progress">in-progress</option>
+        <option value="In-test">in-test</option>
+        <option value="Done">done</option>
+      </select>
+
+    </div>
+
+
+    <div class="form-group box">
+      <label class="tt">Assignee</label>
+
+      <select style="background-color:rgb(182, 228, 255)" [(ngModel)]="issued.assignee"
+        class="custom-select form-control input-box" [ngModelOptions]="{standalone: true}" required>
+        <option selected>Choose...</option>
+
+        <option *ngFor="let user of allusers" value="{{user}}">
+          <p>{{user}}</p>
+        </option>
+      </select>
+
+    </div>
+
+    <br>
+    <button type="submit" class="btn btn-default btn-primary submit button" [disabled]="!editIssueForm.form.valid">Edit
+      Issue</button>
+
+  </form>
+
+</div>
