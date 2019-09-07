@@ -94,10 +94,9 @@ else{
     reporterName:Cookie.get("userName"),
     assignee:this.assignee
   }
-  if(data){ this.spinner.show()}
   this.service.Upload(data).subscribe((Data)=>{
     let Issuedata=Data['data']
-  
+    this.spinner.show()
     this.toastr.success("Issue created successfully")
     setTimeout(()=>{this.router.navigate([`${Issuedata.issueId}/view`])
   },1000)
