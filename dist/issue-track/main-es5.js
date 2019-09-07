@@ -224,7 +224,6 @@ var LogInComponent = /** @class */ (function () {
                     if (apiResponse.status === 200) {
                         _this.SocketService.verifyUser(apiResponse.data.authToken)
                             .subscribe(function (data) {
-                            console.log("working");
                             _this.disconnectedSocket = false;
                         });
                         ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].set('authtoken', apiResponse.data.authToken);
@@ -237,7 +236,7 @@ var LogInComponent = /** @class */ (function () {
                         _this.toastr.error(apiResponse.message);
                     }
                 }, function (err) {
-                    _this.toastr.error('some error occured');
+                    _this.toastr.warning('enter correct password');
                 });
             } // end condition
         }; // end Log-inFunction
@@ -322,7 +321,6 @@ var SignupComponent = /** @class */ (function () {
             socialPlatformProvider = angular_6_social_login__WEBPACK_IMPORTED_MODULE_6__["GoogleLoginProvider"].PROVIDER_ID;
         }
         this.socialAuthService.signIn(socialPlatformProvider).then(function (userData) {
-            console.log(socialPlatform + " sign in data : ", userData);
             var name = userData.name.split(" ");
             var firstName = name[0];
             var possibleLastName = [];
@@ -337,12 +335,9 @@ var SignupComponent = /** @class */ (function () {
                 lastName: lastName,
                 email: userData.email
             };
-            console.log(data);
             _this.service.Google(data).subscribe(function (apiResponse) {
-                console.log(apiResponse);
                 if (apiResponse.status === 200) {
                     _this.toastr.success('Signup successful');
-                    console.log(apiResponse);
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].set('authtoken', apiResponse.data.authToken);
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].set('userId', apiResponse.data.userDetails.userId);
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].set('userName', apiResponse.data.userDetails.firstName + ' ' + apiResponse.data.userDetails.lastName);
@@ -384,9 +379,7 @@ var SignupComponent = /** @class */ (function () {
                 password: this.password,
                 mobileNumber: this.mobileNumber,
             };
-            console.log(data);
             this.service.signupFunction(data).subscribe(function (apiResponse) {
-                console.log(apiResponse);
                 if (apiResponse.status === 200) {
                     _this.toastr.success('Signup successful');
                     setTimeout(function () {
@@ -698,7 +691,6 @@ var AssignedIssueComponent = /** @class */ (function () {
                 if (apiResponse.status === 200) {
                     _this.SocketService.disconnect();
                     _this.SocketService.exitSocket();
-                    console.log("logout called");
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].delete('authtoken');
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].delete('userName');
                     _this.router.navigate(['/login']);
@@ -903,14 +895,12 @@ var CreateIssueComponent = /** @class */ (function () {
                     }
                     finally { if (e_1) throw e_1.error; }
                 }
-                console.log(_this.allusers);
             });
         };
         //log out function
         this.logout = function () {
             _this.service.logout().subscribe(function (apiResponse) {
                 if (apiResponse.status === 200) {
-                    console.log("logout called");
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_2__["Cookie"].delete('authtoken');
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_2__["Cookie"].delete('userName');
                     _this.router.navigate(['/login']);
@@ -965,7 +955,6 @@ var CreateIssueComponent = /** @class */ (function () {
     //function to select and preview image
     CreateIssueComponent.prototype.Selected = function (event) {
         var _this = this;
-        console.log(event);
         this.file = event.target.files[0];
         var reader = new FileReader();
         reader.onload = function () {
@@ -1001,10 +990,8 @@ var CreateIssueComponent = /** @class */ (function () {
                 reporterName: ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_2__["Cookie"].get("userName"),
                 assignee: this.assignee
             };
-            console.log(data);
             this.service.Upload(data).subscribe(function (Data) {
                 var Issuedata = Data['data'];
-                console.log(Issuedata);
                 _this.toastr.success("Issue created successfully");
                 setTimeout(function () {
                     _this.router.navigate([Issuedata.issueId + "/view"]);
@@ -1118,7 +1105,6 @@ var EditIssueComponent = /** @class */ (function () {
                     }
                     finally { if (e_1) throw e_1.error; }
                 }
-                console.log(_this.allusers);
             });
         };
         //socket function to notify adding watchers
@@ -1160,7 +1146,6 @@ var EditIssueComponent = /** @class */ (function () {
                 if (apiResponse.status === 200) {
                     _this.SocketService.disconnect();
                     _this.SocketService.exitSocket();
-                    console.log("logout called");
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_6__["Cookie"].delete('authtoken');
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_6__["Cookie"].delete('userName');
                     _this.router.navigate(['/login']);
@@ -1177,11 +1162,8 @@ var EditIssueComponent = /** @class */ (function () {
         var _this = this;
         this.allUsers();
         var issueId = this._route.snapshot.paramMap.get('id');
-        console.log(issueId);
         this.issued = this.Service.getsingle(issueId).subscribe(function (data) {
-            console.log(data);
             _this.issued = data['data'];
-            console.log(_this.issued);
             // this.upload();
         });
         this.issuenotify();
@@ -1190,10 +1172,8 @@ var EditIssueComponent = /** @class */ (function () {
     };
     EditIssueComponent.prototype.Selected = function (event) {
         var _this = this;
-        console.log(event);
         this.file = event.target.files[0];
         var reader = new FileReader();
-        console.log("" + this.file);
         reader.onload = function () {
             _this.imagePreview = reader.result.toString();
         };
@@ -1206,10 +1186,7 @@ var EditIssueComponent = /** @class */ (function () {
             this.issued.image = this.file;
             this.issued.name = this.file.name;
         }
-        console.log(this.issued);
         this.Service.edit(this.issued.issueId, this.issued).subscribe(function (data) {
-            console.log('blog edited');
-            console.log(data);
             _this.toastr.success('blog posted', 'Success');
             //socket function to emit edit event
             _this.SocketService.issueUpdated(ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_6__["Cookie"].get('userName'), _this.issued.reporterName);
@@ -1218,7 +1195,6 @@ var EditIssueComponent = /** @class */ (function () {
                 _this.router.navigate([_this.issued.issueId + "/view"]);
             }, 1000);
         }, function (error) {
-            console.log("error in blog");
             console.log(error.errorMessage);
         });
     };
@@ -1297,7 +1273,6 @@ var HomeComponent = /** @class */ (function () {
           for(keyt in this.details[i]){
             
           if(this.details[i][keyt]===key){
-            console.log(this.details[i])
            return this.details=[this.details[i]]
           }
         
@@ -1334,7 +1309,6 @@ var HomeComponent = /** @class */ (function () {
         this.logout = function () {
             _this.appService.logout().subscribe(function (apiResponse) {
                 if (apiResponse.status === 200) {
-                    console.log("logout called");
                     ng2_cookies__WEBPACK_IMPORTED_MODULE_2__["Cookie"].delete('authtoken');
                     ng2_cookies__WEBPACK_IMPORTED_MODULE_2__["Cookie"].delete('userName');
                     _this.router.navigate(['/login']);
@@ -1385,7 +1359,6 @@ var HomeComponent = /** @class */ (function () {
         var _this = this;
         this.appService.dashboard().subscribe(function (data) {
             _this.details = data["data"];
-            console.log(_this.details);
         });
         this.commentnotify();
         this.watchnotify();
@@ -1449,7 +1422,6 @@ var IssueRouteGaurdService = /** @class */ (function () {
         this.router = router;
     }
     IssueRouteGaurdService.prototype.canActivate = function (route) {
-        console.log("in guard service");
         if (ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].get('authtoken') === undefined || ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].get('authtoken') === '' || ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].get('authtoken') === null) {
             this.router.navigate(['/']);
             return false;
@@ -1535,7 +1507,6 @@ var IssueService = /** @class */ (function () {
         return this.http.get(this.url + "/issues");
     };
     IssueService.prototype.Upload = function (data) {
-        console.log(data);
         var issueData = new FormData();
         issueData.append("issueTitle", data.title);
         issueData.append("description", data.description);
@@ -1543,7 +1514,6 @@ var IssueService = /** @class */ (function () {
         issueData.append("productImage", data.image, data.name);
         issueData.append("reporterName", data.reporterName);
         issueData.append("assignee", data.assignee);
-        console.log(issueData);
         return this.http.post(this.url + "/create", issueData);
     };
     IssueService.prototype.getsingle = function (issueId) {
@@ -1559,7 +1529,6 @@ var IssueService = /** @class */ (function () {
             formData.append("productImage", data.image, data.name);
             formData.append("reporterName", data.reporterName);
             formData.append("assignee", data.assignee);
-            console.log(formData);
         }
         else if (!data.image) {
             formData.append("issueTitle", data.issueTitle);
@@ -1569,7 +1538,6 @@ var IssueService = /** @class */ (function () {
             formData.append("reporterName", data.reporterName);
             formData.append("assignee", data.assignee);
         }
-        console.log(formData);
         return this.http.put(this.url + "/" + issueId + "/edit", formData || formdata);
     };
     IssueService.prototype.allUser = function () {
@@ -1579,11 +1547,9 @@ var IssueService = /** @class */ (function () {
         return this.http.post(this.url + "/" + issueId + "/delete", issueId);
     };
     IssueService.prototype.comment = function (issueId, data) {
-        console.log(data);
         return this.http.put(this.url + "/" + issueId + "/comment", data);
     };
     IssueService.prototype.watch = function (issueId, data) {
-        console.log(data);
         return this.http.put(this.url + "/" + issueId + "/watch", data);
     };
     IssueService.ctorParameters = function () { return [
@@ -1679,7 +1645,6 @@ var ReportedComponent = /** @class */ (function () {
         this.logout = function () {
             _this.Service.logout().subscribe(function (apiResponse) {
                 if (apiResponse.status === 200) {
-                    console.log("logout called");
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_2__["Cookie"].delete('authtoken');
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_2__["Cookie"].delete('userName');
                     _this.router.navigate(['/login']);
@@ -1735,7 +1700,6 @@ var ReportedComponent = /** @class */ (function () {
         this.Service.dashboard().subscribe(function (data) {
             var e_1, _a;
             _this.details = data["data"];
-            console.log(_this.details);
             try {
                 for (var _b = tslib__WEBPACK_IMPORTED_MODULE_0__["__values"](_this.details), _c = _b.next(); !_c.done; _c = _b.next()) {
                     var issue = _c.value;
@@ -1809,12 +1773,11 @@ __webpack_require__.r(__webpack_exports__);
 var SocketService = /** @class */ (function () {
     function SocketService() {
         var _this = this;
-        this.url = '/';
+        this.url = 'http://13.232.157.131:4001/';
         this.verifyUser = function (authToken) {
             _this.socket.emit('set-user', authToken);
             return rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"].create(function (observer) {
                 _this.socket.on('verifyUser', function (data) {
-                    console.log(data);
                     observer.next(data);
                 });
             });
@@ -1830,7 +1793,6 @@ var SocketService = /** @class */ (function () {
             _this.socket.disconnect();
         };
         this.issueUpdated = function (name, reporter) {
-            console.log(reporter);
             _this.socket.emit('issue-updated', name, reporter);
         };
         this.issueNotify = function () {
@@ -1846,7 +1808,6 @@ var SocketService = /** @class */ (function () {
         this.commentNotify = function () {
             return rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"].create(function (observer) {
                 _this.socket.on('commentno', function (name) {
-                    console.log(name);
                     observer.next(name);
                 });
             });
@@ -1857,7 +1818,6 @@ var SocketService = /** @class */ (function () {
         this.watchNotify = function () {
             return rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"].create(function (observer) {
                 _this.socket.on('watchno', function (name) {
-                    console.log(name);
                     observer.next(name);
                 });
             });
@@ -1979,7 +1939,6 @@ var ViewIssueComponent = /** @class */ (function () {
                 if (apiResponse.status === 200) {
                     _this.socket.disconnect();
                     _this.socket.exitSocket();
-                    console.log("logout called");
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_5__["Cookie"].delete('authtoken');
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_5__["Cookie"].delete('userName');
                     _this.router.navigate(['/login']);
@@ -1996,11 +1955,8 @@ var ViewIssueComponent = /** @class */ (function () {
         var _this = this;
         // function to get issueId
         var issueId = this._route.snapshot.paramMap.get('id');
-        console.log(issueId);
         this.issued = this.Service.getsingle(issueId).subscribe(function (data) {
-            console.log(data);
             _this.issued = data['data'];
-            console.log(_this.issued);
         });
         this.commentnotify();
         this.watchnotify();
@@ -2043,7 +1999,6 @@ var ViewIssueComponent = /** @class */ (function () {
                             _this.watchnotify();
                             _this.toastr.success('you are added to watcher list');
                         });
-                        console.log(this.issued.watchers);
                     }
                 }
             }
@@ -2073,7 +2028,6 @@ var ViewIssueComponent = /** @class */ (function () {
             this.Service.comment(this.issued.issueId, object).subscribe(function (data) {
                 _this.toastr.success("comment uploaded successfully");
                 _this.socket.comment(name, _this.issued.reporterName);
-                console.log(data);
             });
         }
     };

@@ -67,7 +67,6 @@ export class LogInComponent implements OnInit {
           if (apiResponse.status === 200) {
             this.SocketService.verifyUser(apiResponse.data.authToken)
               .subscribe((data) => {
-                console.log("working")
                 this.disconnectedSocket = false;
 
               });
@@ -89,7 +88,7 @@ export class LogInComponent implements OnInit {
           }
 
         }, (err) => {
-          this.toastr.error('some error occured')
+          this.toastr.warning('enter correct password')
 
         });
 

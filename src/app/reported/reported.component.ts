@@ -30,7 +30,6 @@ this.commentnotify()
     //function to get reported issues
     this.Service.dashboard().subscribe((data)=>{
       this.details=data["data"]
-      console.log(this.details)
       for(let issue of this.details){
         if(this.fullName==issue.reporterName){
           this.array.push(issue);
@@ -91,7 +90,6 @@ this.commentnotify()
       this.Service.logout().subscribe((apiResponse) => {
   
         if (apiResponse.status === 200) {
-          console.log("logout called")
           Cookie.delete('authtoken');
           Cookie.delete('userName');
           this.router.navigate(['/login']);

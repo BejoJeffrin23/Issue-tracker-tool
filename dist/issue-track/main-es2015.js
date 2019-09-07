@@ -220,7 +220,6 @@ let LogInComponent = class LogInComponent {
                     if (apiResponse.status === 200) {
                         this.SocketService.verifyUser(apiResponse.data.authToken)
                             .subscribe((data) => {
-                            console.log("working");
                             this.disconnectedSocket = false;
                         });
                         ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].set('authtoken', apiResponse.data.authToken);
@@ -233,7 +232,7 @@ let LogInComponent = class LogInComponent {
                         this.toastr.error(apiResponse.message);
                     }
                 }, (err) => {
-                    this.toastr.error('some error occured');
+                    this.toastr.warning('enter correct password');
                 });
             } // end condition
         }; // end Log-inFunction
@@ -315,7 +314,6 @@ let SignupComponent = class SignupComponent {
             socialPlatformProvider = angular_6_social_login__WEBPACK_IMPORTED_MODULE_6__["GoogleLoginProvider"].PROVIDER_ID;
         }
         this.socialAuthService.signIn(socialPlatformProvider).then((userData) => {
-            console.log(socialPlatform + " sign in data : ", userData);
             let name = userData.name.split(" ");
             let firstName = name[0];
             let possibleLastName = [];
@@ -330,12 +328,9 @@ let SignupComponent = class SignupComponent {
                 lastName: lastName,
                 email: userData.email
             };
-            console.log(data);
             this.service.Google(data).subscribe((apiResponse) => {
-                console.log(apiResponse);
                 if (apiResponse.status === 200) {
                     this.toastr.success('Signup successful');
-                    console.log(apiResponse);
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].set('authtoken', apiResponse.data.authToken);
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].set('userId', apiResponse.data.userDetails.userId);
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].set('userName', apiResponse.data.userDetails.firstName + ' ' + apiResponse.data.userDetails.lastName);
@@ -376,9 +371,7 @@ let SignupComponent = class SignupComponent {
                 password: this.password,
                 mobileNumber: this.mobileNumber,
             };
-            console.log(data);
             this.service.signupFunction(data).subscribe((apiResponse) => {
-                console.log(apiResponse);
                 if (apiResponse.status === 200) {
                     this.toastr.success('Signup successful');
                     setTimeout(() => {
@@ -670,7 +663,6 @@ let AssignedIssueComponent = class AssignedIssueComponent {
                 if (apiResponse.status === 200) {
                     this.SocketService.disconnect();
                     this.SocketService.exitSocket();
-                    console.log("logout called");
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].delete('authtoken');
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].delete('userName');
                     this.router.navigate(['/login']);
@@ -862,14 +854,12 @@ let CreateIssueComponent = class CreateIssueComponent {
                         this.allusers.push(name);
                     }
                 }
-                console.log(this.allusers);
             });
         };
         //log out function
         this.logout = () => {
             this.service.logout().subscribe((apiResponse) => {
                 if (apiResponse.status === 200) {
-                    console.log("logout called");
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_2__["Cookie"].delete('authtoken');
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_2__["Cookie"].delete('userName');
                     this.router.navigate(['/login']);
@@ -923,7 +913,6 @@ let CreateIssueComponent = class CreateIssueComponent {
     }
     //function to select and preview image
     Selected(event) {
-        console.log(event);
         this.file = event.target.files[0];
         const reader = new FileReader();
         reader.onload = () => {
@@ -958,10 +947,8 @@ let CreateIssueComponent = class CreateIssueComponent {
                 reporterName: ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_2__["Cookie"].get("userName"),
                 assignee: this.assignee
             };
-            console.log(data);
             this.service.Upload(data).subscribe((Data) => {
                 let Issuedata = Data['data'];
-                console.log(Issuedata);
                 this.toastr.success("Issue created successfully");
                 setTimeout(() => {
                     this.router.navigate([`${Issuedata.issueId}/view`]);
@@ -1062,7 +1049,6 @@ let EditIssueComponent = class EditIssueComponent {
                     let name = `${user.firstName} ${user.lastName}`;
                     this.allusers.push(name);
                 }
-                console.log(this.allusers);
             });
         };
         //socket function to notify adding watchers
@@ -1104,7 +1090,6 @@ let EditIssueComponent = class EditIssueComponent {
                 if (apiResponse.status === 200) {
                     this.SocketService.disconnect();
                     this.SocketService.exitSocket();
-                    console.log("logout called");
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_6__["Cookie"].delete('authtoken');
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_6__["Cookie"].delete('userName');
                     this.router.navigate(['/login']);
@@ -1120,11 +1105,8 @@ let EditIssueComponent = class EditIssueComponent {
     ngOnInit() {
         this.allUsers();
         let issueId = this._route.snapshot.paramMap.get('id');
-        console.log(issueId);
         this.issued = this.Service.getsingle(issueId).subscribe(data => {
-            console.log(data);
             this.issued = data['data'];
-            console.log(this.issued);
             // this.upload();
         });
         this.issuenotify();
@@ -1132,10 +1114,8 @@ let EditIssueComponent = class EditIssueComponent {
         this.watchnotify();
     }
     Selected(event) {
-        console.log(event);
         this.file = event.target.files[0];
         const reader = new FileReader();
-        console.log(`${this.file}`);
         reader.onload = () => {
             this.imagePreview = reader.result.toString();
         };
@@ -1147,10 +1127,7 @@ let EditIssueComponent = class EditIssueComponent {
             this.issued.image = this.file;
             this.issued.name = this.file.name;
         }
-        console.log(this.issued);
         this.Service.edit(this.issued.issueId, this.issued).subscribe(data => {
-            console.log('blog edited');
-            console.log(data);
             this.toastr.success('blog posted', 'Success');
             //socket function to emit edit event
             this.SocketService.issueUpdated(ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_6__["Cookie"].get('userName'), this.issued.reporterName);
@@ -1159,7 +1136,6 @@ let EditIssueComponent = class EditIssueComponent {
                 this.router.navigate([`${this.issued.issueId}/view`]);
             }, 1000);
         }, error => {
-            console.log("error in blog");
             console.log(error.errorMessage);
         });
     }
@@ -1236,7 +1212,6 @@ let HomeComponent = class HomeComponent {
           for(keyt in this.details[i]){
             
           if(this.details[i][keyt]===key){
-            console.log(this.details[i])
            return this.details=[this.details[i]]
           }
         
@@ -1273,7 +1248,6 @@ let HomeComponent = class HomeComponent {
         this.logout = () => {
             this.appService.logout().subscribe((apiResponse) => {
                 if (apiResponse.status === 200) {
-                    console.log("logout called");
                     ng2_cookies__WEBPACK_IMPORTED_MODULE_2__["Cookie"].delete('authtoken');
                     ng2_cookies__WEBPACK_IMPORTED_MODULE_2__["Cookie"].delete('userName');
                     this.router.navigate(['/login']);
@@ -1323,7 +1297,6 @@ let HomeComponent = class HomeComponent {
     ngOnInit() {
         this.appService.dashboard().subscribe((data) => {
             this.details = data["data"];
-            console.log(this.details);
         });
         this.commentnotify();
         this.watchnotify();
@@ -1386,7 +1359,6 @@ let IssueRouteGaurdService = class IssueRouteGaurdService {
         this.router = router;
     }
     canActivate(route) {
-        console.log("in guard service");
         if (ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].get('authtoken') === undefined || ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].get('authtoken') === '' || ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_3__["Cookie"].get('authtoken') === null) {
             this.router.navigate(['/']);
             return false;
@@ -1471,7 +1443,6 @@ let IssueService = class IssueService {
         return this.http.get(`${this.url}/issues`);
     }
     Upload(data) {
-        console.log(data);
         const issueData = new FormData();
         issueData.append("issueTitle", data.title);
         issueData.append("description", data.description);
@@ -1479,7 +1450,6 @@ let IssueService = class IssueService {
         issueData.append("productImage", data.image, data.name);
         issueData.append("reporterName", data.reporterName);
         issueData.append("assignee", data.assignee);
-        console.log(issueData);
         return this.http.post(`${this.url}/create`, issueData);
     }
     getsingle(issueId) {
@@ -1495,7 +1465,6 @@ let IssueService = class IssueService {
             formData.append("productImage", data.image, data.name);
             formData.append("reporterName", data.reporterName);
             formData.append("assignee", data.assignee);
-            console.log(formData);
         }
         else if (!data.image) {
             formData.append("issueTitle", data.issueTitle);
@@ -1505,7 +1474,6 @@ let IssueService = class IssueService {
             formData.append("reporterName", data.reporterName);
             formData.append("assignee", data.assignee);
         }
-        console.log(formData);
         return this.http.put(`${this.url}/${issueId}/edit`, formData || formdata);
     }
     allUser() {
@@ -1515,11 +1483,9 @@ let IssueService = class IssueService {
         return this.http.post(`${this.url}/${issueId}/delete`, issueId);
     }
     comment(issueId, data) {
-        console.log(data);
         return this.http.put(`${this.url}/${issueId}/comment`, data);
     }
     watch(issueId, data) {
-        console.log(data);
         return this.http.put(`${this.url}/${issueId}/watch`, data);
     }
 };
@@ -1613,7 +1579,6 @@ let ReportedComponent = class ReportedComponent {
         this.logout = () => {
             this.Service.logout().subscribe((apiResponse) => {
                 if (apiResponse.status === 200) {
-                    console.log("logout called");
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_2__["Cookie"].delete('authtoken');
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_2__["Cookie"].delete('userName');
                     this.router.navigate(['/login']);
@@ -1667,7 +1632,6 @@ let ReportedComponent = class ReportedComponent {
         //function to get reported issues
         this.Service.dashboard().subscribe((data) => {
             this.details = data["data"];
-            console.log(this.details);
             for (let issue of this.details) {
                 if (this.fullName == issue.reporterName) {
                     this.array.push(issue);
@@ -1729,12 +1693,11 @@ __webpack_require__.r(__webpack_exports__);
 
 let SocketService = class SocketService {
     constructor() {
-        this.url = '/';
+        this.url = 'http://13.232.157.131:4001/';
         this.verifyUser = (authToken) => {
             this.socket.emit('set-user', authToken);
             return rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"].create((observer) => {
                 this.socket.on('verifyUser', (data) => {
-                    console.log(data);
                     observer.next(data);
                 });
             });
@@ -1750,7 +1713,6 @@ let SocketService = class SocketService {
             this.socket.disconnect();
         };
         this.issueUpdated = (name, reporter) => {
-            console.log(reporter);
             this.socket.emit('issue-updated', name, reporter);
         };
         this.issueNotify = () => {
@@ -1766,7 +1728,6 @@ let SocketService = class SocketService {
         this.commentNotify = () => {
             return rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"].create((observer) => {
                 this.socket.on('commentno', (name) => {
-                    console.log(name);
                     observer.next(name);
                 });
             });
@@ -1777,7 +1738,6 @@ let SocketService = class SocketService {
         this.watchNotify = () => {
             return rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"].create((observer) => {
                 this.socket.on('watchno', (name) => {
-                    console.log(name);
                     observer.next(name);
                 });
             });
@@ -1897,7 +1857,6 @@ let ViewIssueComponent = class ViewIssueComponent {
                 if (apiResponse.status === 200) {
                     this.socket.disconnect();
                     this.socket.exitSocket();
-                    console.log("logout called");
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_5__["Cookie"].delete('authtoken');
                     ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_5__["Cookie"].delete('userName');
                     this.router.navigate(['/login']);
@@ -1913,11 +1872,8 @@ let ViewIssueComponent = class ViewIssueComponent {
     ngOnInit() {
         // function to get issueId
         let issueId = this._route.snapshot.paramMap.get('id');
-        console.log(issueId);
         this.issued = this.Service.getsingle(issueId).subscribe(data => {
-            console.log(data);
             this.issued = data['data'];
-            console.log(this.issued);
         });
         this.commentnotify();
         this.watchnotify();
@@ -1956,7 +1912,6 @@ let ViewIssueComponent = class ViewIssueComponent {
                         this.watchnotify();
                         this.toastr.success('you are added to watcher list');
                     });
-                    console.log(this.issued.watchers);
                 }
             }
         }
@@ -1977,7 +1932,6 @@ let ViewIssueComponent = class ViewIssueComponent {
             this.Service.comment(this.issued.issueId, object).subscribe(data => {
                 this.toastr.success("comment uploaded successfully");
                 this.socket.comment(name, this.issued.reporterName);
-                console.log(data);
             });
         }
     }

@@ -11,7 +11,6 @@ export class IssueRouteGaurdService {
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
 
-    console.log("in guard service");
 
     if (Cookie.get('authtoken') === undefined || Cookie.get('authtoken') === '' || Cookie.get('authtoken') === null) {
 

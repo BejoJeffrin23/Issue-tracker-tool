@@ -50,7 +50,6 @@ export class SignupComponent  {
     
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
-        console.log(socialPlatform+" sign in data : " , userData);
         let name = userData.name.split(" ");
         let firstName = name[0];
         let possibleLastName = [];
@@ -66,19 +65,16 @@ export class SignupComponent  {
           lastName: lastName,
           email: userData.email
         }
-        console.log(data)
         this.service.Google(data).subscribe(
           (apiResponse) => {
   
   
-            console.log(apiResponse);
   
             if(apiResponse.status === 200){
   
   
               this.toastr.success('Signup successful');
   
-              console.log(apiResponse)
 
              Cookie.set('authtoken', apiResponse.data.authToken);
             
@@ -150,13 +146,11 @@ export class SignupComponent  {
         mobileNumber: this.mobileNumber,
       }
 
-      console.log(data);
 
       this.service.signupFunction(data).subscribe(
         (apiResponse) => {
 
 
-          console.log(apiResponse);
 
           if(apiResponse.status === 200){
 

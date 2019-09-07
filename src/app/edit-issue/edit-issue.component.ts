@@ -49,12 +49,9 @@ export class EditIssueComponent implements OnInit {
     this.allUsers()
 
     let issueId = this._route.snapshot.paramMap.get('id');
-    console.log(issueId)
     this.issued = this.Service.getsingle(issueId).subscribe(
       data => {
-        console.log(data)
         this.issued = data['data'];
-        console.log(this.issued)
         // this.upload();
       })
 
@@ -76,7 +73,6 @@ export class EditIssueComponent implements OnInit {
         this.allusers.push(name)
 
       }
-      console.log(this.allusers)
     })
   }
 
@@ -85,10 +81,8 @@ export class EditIssueComponent implements OnInit {
   //function to load and preview image
   file: File;
   Selected(event) {
-    console.log(event)
     this.file = event.target.files[0];
     const reader = new FileReader();
-    console.log(`${this.file}`)
 
     reader.onload = () => {
       this.imagePreview = reader.result.toString();
@@ -102,11 +96,8 @@ export class EditIssueComponent implements OnInit {
       this.issued.image = this.file;
       this.issued.name = this.file.name
     }
-    console.log(this.issued)
 
     this.Service.edit(this.issued.issueId, this.issued).subscribe(data => {
-      console.log('blog edited')
-      console.log(data);
       this.toastr.success('blog posted', 'Success')
       //socket function to emit edit event
       this.SocketService.issueUpdated(Cookie.get('userName'),this.issued.reporterName)
@@ -116,7 +107,6 @@ export class EditIssueComponent implements OnInit {
       }, 1000)
     },
       error => {
-        console.log("error in blog")
         console.log(error.errorMessage)
       })
   }
@@ -152,7 +142,6 @@ public watchnotify = () => {
       if (apiResponse.status === 200) {
         this.SocketService.disconnect()
         this.SocketService.exitSocket()
-        console.log("logout called")
         Cookie.delete('authtoken');
         Cookie.delete('userName');
         this.router.navigate(['/login']);

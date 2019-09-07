@@ -55,7 +55,6 @@ public imagePreview:any;
 
 //function to select and preview image
 Selected(event){
-  console.log(event)
   this.file=event.target.files[0];
   const reader = new FileReader();
   reader.onload = () => {
@@ -94,10 +93,8 @@ else{
     reporterName:Cookie.get("userName"),
     assignee:this.assignee
   }
-  console.log(data)
   this.service.Upload(data).subscribe((Data)=>{
     let Issuedata=Data['data']
-    console.log(Issuedata)
     this.toastr.success("Issue created successfully")
     setTimeout(()=>{this.router.navigate([`${Issuedata.issueId}/view`])
   },1000)
@@ -116,7 +113,6 @@ let name=`${user.firstName} ${user.lastName}`
         this.allusers.push(name)
       }
     }
-    console.log(this.allusers)
   })
 }
 
@@ -127,7 +123,6 @@ public logout = () => {
   this.service.logout().subscribe((apiResponse) => {
 
     if (apiResponse.status === 200) {
-      console.log("logout called")
       Cookie.delete('authtoken');
       Cookie.delete('userName');
       this.router.navigate(['/login']);

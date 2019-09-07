@@ -70,7 +70,6 @@ public dashboard():Observable<any>{
 
 
 public Upload(data):Observable<any>{
-  console.log(data)
     const issueData = new FormData();
     issueData.append("issueTitle", data.title);
     issueData.append("description", data.description);
@@ -78,7 +77,6 @@ public Upload(data):Observable<any>{
     issueData.append("productImage", data.image, data.name);
 issueData.append("reporterName",data.reporterName);
 issueData.append("assignee",data.assignee)
-console.log(issueData)
 
     return this.http.post(`${this.url}/create`, issueData)
 
@@ -100,8 +98,7 @@ public getsingle(issueId):any{
   formData.append("productImage", data.image, data.name);
 formData.append("reporterName",data.reporterName);
 formData.append("assignee",data.assignee)
-console.log(formData)}
-else if(!data.image){
+   }else if(!data.image){
   formData.append("issueTitle", data.issueTitle);
   formData.append("description", data.description);
   formData.append("status", data.status);
@@ -109,7 +106,6 @@ else if(!data.image){
 formData.append("reporterName",data.reporterName);
 formData.append("assignee",data.assignee)
 }
-console.log(formData)
 
   return this.http.put(`${this.url}/${issueId}/edit`,formData||formdata)
 
@@ -124,12 +120,10 @@ return this.http.post(`${this.url}/${issueId}/delete`,issueId)
 }
 
 public comment(issueId,data){
-  console.log(data)
   return this.http.put(`${this.url}/${issueId}/comment`,data)
 }
 
 public watch(issueId,data){
-  console.log(data)
   return this.http.put(`${this.url}/${issueId}/watch`,data)
 }
 

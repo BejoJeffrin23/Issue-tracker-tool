@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class SocketService {
   
-private url ='/';
+private url ='http://13.232.157.131:4001/';
 public socket;
 
 
@@ -21,7 +21,6 @@ public socket;
 
     return Observable.create((observer)=>{
       this.socket.on('verifyUser',(data)=>{
-        console.log(data)
         observer.next(data)
       })
     })
@@ -41,7 +40,6 @@ public socket;
 
      
 public issueUpdated=(name,reporter)=>{
-  console.log(reporter)
   this.socket.emit('issue-updated',name,reporter)
 }
 
@@ -61,7 +59,6 @@ public issueNotify=()=>{
   public commentNotify=()=>{
     return Observable.create((observer)=>{
       this.socket.on('commentno',(name)=>{
-        console.log(name)
         observer.next(name)
       })
     })
@@ -74,7 +71,6 @@ public issueNotify=()=>{
     public watchNotify=()=>{
       return Observable.create((observer)=>{
         this.socket.on('watchno',(name)=>{
-          console.log(name)
           observer.next(name)
         })
       })

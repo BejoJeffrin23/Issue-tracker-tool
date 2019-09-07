@@ -42,12 +42,9 @@ export class ViewIssueComponent implements OnInit {
   ngOnInit() {
     // function to get issueId
     let issueId = this._route.snapshot.paramMap.get('id');
-    console.log(issueId)
     this.issued = this.Service.getsingle(issueId).subscribe(
       data => {
-        console.log(data)
         this.issued = data['data'];
-        console.log(this.issued)
       })
               this.commentnotify()
               this.watchnotify()
@@ -89,7 +86,6 @@ export class ViewIssueComponent implements OnInit {
             this.watchnotify()
             this.toastr.success('you are added to watcher list')
           })
-          console.log(this.issued.watchers)
         }
       }
 
@@ -113,7 +109,6 @@ export class ViewIssueComponent implements OnInit {
       this.Service.comment(this.issued.issueId, object).subscribe(data => {
         this.toastr.success("comment uploaded successfully")
         this.socket.comment(name,this.issued.reporterName)
-        console.log(data)
       })
     }
   }
@@ -165,7 +160,6 @@ export class ViewIssueComponent implements OnInit {
       if (apiResponse.status === 200) {
         this.socket.disconnect()
         this.socket.exitSocket()
-        console.log("logout called")
         Cookie.delete('authtoken');
         Cookie.delete('userName');
         this.router.navigate(['/login']);

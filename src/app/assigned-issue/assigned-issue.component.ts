@@ -81,7 +81,6 @@ public assigned=()=>{
       if (apiResponse.status === 200) {
         this.SocketService.disconnect()
         this.SocketService.exitSocket()
-        console.log("logout called")
         Cookie.delete('authtoken');
         Cookie.delete('userName');
         this.router.navigate(['/login']);
