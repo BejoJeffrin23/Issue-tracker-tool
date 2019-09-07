@@ -999,6 +999,7 @@ var CreateIssueComponent = /** @class */ (function () {
             this.service.Upload(data).subscribe(function (Data) {
                 var Issuedata = Data['data'];
                 _this.spinner.show();
+                setTimeout(function () { _this.spinner.hide(); }, 5000);
                 _this.toastr.success("Issue created successfully");
                 setTimeout(function () {
                     _this.router.navigate([Issuedata.issueId + "/view"]);

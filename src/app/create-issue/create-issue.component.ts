@@ -97,6 +97,7 @@ else{
   this.service.Upload(data).subscribe((Data)=>{
     let Issuedata=Data['data']
     this.spinner.show()
+    setTimeout(()=>{this.spinner.hide()},5000)
     this.toastr.success("Issue created successfully")
     setTimeout(()=>{this.router.navigate([`${Issuedata.issueId}/view`])
   },1000)
