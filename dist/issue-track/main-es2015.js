@@ -953,9 +953,11 @@ let CreateIssueComponent = class CreateIssueComponent {
                 reporterName: ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_2__["Cookie"].get("userName"),
                 assignee: this.assignee
             };
+            if (data) {
+                this.spinner.show();
+            }
             this.service.Upload(data).subscribe((Data) => {
                 let Issuedata = Data['data'];
-                this.spinner.show();
                 this.toastr.success("Issue created successfully");
                 setTimeout(() => {
                     this.router.navigate([`${Issuedata.issueId}/view`]);
