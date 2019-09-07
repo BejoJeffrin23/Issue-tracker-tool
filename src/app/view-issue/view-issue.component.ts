@@ -62,26 +62,20 @@ export class ViewIssueComponent implements OnInit {
     let y: any
     if (this.issued.watchers.length <= 0) {
       let object = { 'watcher': name }
-      console.log(object)
       this.issued.watchers.push(object)
       this.Service.watch(this.issued.issueId, object).subscribe((data) => {
-        console.log(data)
         this.socket.watch(name,this.issued.reporterName)
         this.toastr.success('you are added to watcher list')
       })
-      console.log(this.issued.watchers)
     } else {
       let x: any
       for (x of this.issued.watchers) {
         if (x.watcher = name) {
-          console.log(x.watcher)
           this.toastr.success('you are already a watcher')
         } else if (this.watch) { } else {
           let object = { 'watcher': name }
-          console.log(object)
           this.issued.watchers.push(object)
           this.Service.watch(this.issued.issueId, object).subscribe((data) => {
-            console.log(data)
             this.socket.watch(name,this.issued.reporterName)
             this.watchnotify()
             this.toastr.success('you are added to watcher list')
