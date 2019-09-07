@@ -1773,7 +1773,7 @@ __webpack_require__.r(__webpack_exports__);
 var SocketService = /** @class */ (function () {
     function SocketService() {
         var _this = this;
-        this.url = '/';
+        this.url = 'http://13.232.157.131:4001';
         this.verifyUser = function (authToken) {
             _this.socket.emit('set-user', authToken);
             return rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"].create(function (observer) {

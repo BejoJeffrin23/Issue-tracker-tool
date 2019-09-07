@@ -1693,7 +1693,7 @@ __webpack_require__.r(__webpack_exports__);
 
 let SocketService = class SocketService {
     constructor() {
-        this.url = '/';
+        this.url = 'http://13.232.157.131:4001';
         this.verifyUser = (authToken) => {
             this.socket.emit('set-user', authToken);
             return rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"].create((observer) => {
