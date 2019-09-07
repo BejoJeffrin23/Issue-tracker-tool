@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class SocketService {
   
-private url ='http://13.232.157.131:4001/';
+private url ='/';
 public socket;
 
 
