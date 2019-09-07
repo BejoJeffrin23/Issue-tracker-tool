@@ -232,7 +232,7 @@ let LogInComponent = class LogInComponent {
                         this.toastr.error(apiResponse.message);
                     }
                 }, (err) => {
-                    this.toastr.warning('enter correct password');
+                    this.toastr.warning('some error occured');
                 });
             } // end condition
         }; // end Log-inFunction
@@ -494,25 +494,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
 /* harmony import */ var ngx_editor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-editor */ "./node_modules/ngx-editor/fesm2015/ngx-editor.js");
-/* harmony import */ var ngx_pagination__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-pagination */ "./node_modules/ngx-pagination/dist/ngx-pagination.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _app_User_signup_signup_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! .././app/User/signup/signup.component */ "./src/app/User/signup/signup.component.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var angular_6_social_login__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! angular-6-social-login */ "./node_modules/angular-6-social-login/angular-6-social-login.umd.js");
-/* harmony import */ var angular_6_social_login__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(angular_6_social_login__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
-/* harmony import */ var _app_User_log_in_log_in_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! .././app/User/log-in/log-in.component */ "./src/app/User/log-in/log-in.component.ts");
-/* harmony import */ var _create_issue_create_issue_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./create-issue/create-issue.component */ "./src/app/create-issue/create-issue.component.ts");
-/* harmony import */ var _Pipes_search_pipe__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./Pipes/search.pipe */ "./src/app/Pipes/search.pipe.ts");
-/* harmony import */ var _edit_issue_edit_issue_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./edit-issue/edit-issue.component */ "./src/app/edit-issue/edit-issue.component.ts");
-/* harmony import */ var _view_issue_view_issue_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./view-issue/view-issue.component */ "./src/app/view-issue/view-issue.component.ts");
-/* harmony import */ var _assigned_issue_assigned_issue_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./assigned-issue/assigned-issue.component */ "./src/app/assigned-issue/assigned-issue.component.ts");
-/* harmony import */ var _reported_reported_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./reported/reported.component */ "./src/app/reported/reported.component.ts");
-/* harmony import */ var _issue_route_gaurd_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./issue-route-gaurd.service */ "./src/app/issue-route-gaurd.service.ts");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm2015/ngx-spinner.js");
+/* harmony import */ var ngx_pagination__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-pagination */ "./node_modules/ngx-pagination/dist/ngx-pagination.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _app_User_signup_signup_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! .././app/User/signup/signup.component */ "./src/app/User/signup/signup.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var angular_6_social_login__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! angular-6-social-login */ "./node_modules/angular-6-social-login/angular-6-social-login.umd.js");
+/* harmony import */ var angular_6_social_login__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(angular_6_social_login__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
+/* harmony import */ var _app_User_log_in_log_in_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! .././app/User/log-in/log-in.component */ "./src/app/User/log-in/log-in.component.ts");
+/* harmony import */ var _create_issue_create_issue_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./create-issue/create-issue.component */ "./src/app/create-issue/create-issue.component.ts");
+/* harmony import */ var _Pipes_search_pipe__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./Pipes/search.pipe */ "./src/app/Pipes/search.pipe.ts");
+/* harmony import */ var _edit_issue_edit_issue_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./edit-issue/edit-issue.component */ "./src/app/edit-issue/edit-issue.component.ts");
+/* harmony import */ var _view_issue_view_issue_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./view-issue/view-issue.component */ "./src/app/view-issue/view-issue.component.ts");
+/* harmony import */ var _assigned_issue_assigned_issue_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./assigned-issue/assigned-issue.component */ "./src/app/assigned-issue/assigned-issue.component.ts");
+/* harmony import */ var _reported_reported_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./reported/reported.component */ "./src/app/reported/reported.component.ts");
+/* harmony import */ var _issue_route_gaurd_service__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./issue-route-gaurd.service */ "./src/app/issue-route-gaurd.service.ts");
+
 
 
 
@@ -537,10 +539,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function getAuthServiceConfigs() {
-    let config = new angular_6_social_login__WEBPACK_IMPORTED_MODULE_12__["AuthServiceConfig"]([
+    let config = new angular_6_social_login__WEBPACK_IMPORTED_MODULE_13__["AuthServiceConfig"]([
         {
-            id: angular_6_social_login__WEBPACK_IMPORTED_MODULE_12__["GoogleLoginProvider"].PROVIDER_ID,
-            provider: new angular_6_social_login__WEBPACK_IMPORTED_MODULE_12__["GoogleLoginProvider"]("591838160370-2d8vnf04agnber0nrjb26j6t5rr4f6hi.apps.googleusercontent.com")
+            id: angular_6_social_login__WEBPACK_IMPORTED_MODULE_13__["GoogleLoginProvider"].PROVIDER_ID,
+            provider: new angular_6_social_login__WEBPACK_IMPORTED_MODULE_13__["GoogleLoginProvider"]("591838160370-2d8vnf04agnber0nrjb26j6t5rr4f6hi.apps.googleusercontent.com")
         },
     ]);
     return config;
@@ -550,45 +552,46 @@ let AppModule = class AppModule {
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
         declarations: [
-            _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
-            _home_home_component__WEBPACK_IMPORTED_MODULE_8__["HomeComponent"],
-            _app_User_signup_signup_component__WEBPACK_IMPORTED_MODULE_10__["SignupComponent"],
-            _app_User_log_in_log_in_component__WEBPACK_IMPORTED_MODULE_15__["LogInComponent"],
-            _Pipes_search_pipe__WEBPACK_IMPORTED_MODULE_17__["SearchPipe"],
-            _create_issue_create_issue_component__WEBPACK_IMPORTED_MODULE_16__["CreateIssueComponent"],
-            _edit_issue_edit_issue_component__WEBPACK_IMPORTED_MODULE_18__["EditIssueComponent"],
-            _view_issue_view_issue_component__WEBPACK_IMPORTED_MODULE_19__["ViewIssueComponent"],
-            _assigned_issue_assigned_issue_component__WEBPACK_IMPORTED_MODULE_20__["AssignedIssueComponent"],
-            _reported_reported_component__WEBPACK_IMPORTED_MODULE_21__["ReportedComponent"]
+            _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
+            _home_home_component__WEBPACK_IMPORTED_MODULE_9__["HomeComponent"],
+            _app_User_signup_signup_component__WEBPACK_IMPORTED_MODULE_11__["SignupComponent"],
+            _app_User_log_in_log_in_component__WEBPACK_IMPORTED_MODULE_16__["LogInComponent"],
+            _Pipes_search_pipe__WEBPACK_IMPORTED_MODULE_18__["SearchPipe"],
+            _create_issue_create_issue_component__WEBPACK_IMPORTED_MODULE_17__["CreateIssueComponent"],
+            _edit_issue_edit_issue_component__WEBPACK_IMPORTED_MODULE_19__["EditIssueComponent"],
+            _view_issue_view_issue_component__WEBPACK_IMPORTED_MODULE_20__["ViewIssueComponent"],
+            _assigned_issue_assigned_issue_component__WEBPACK_IMPORTED_MODULE_21__["AssignedIssueComponent"],
+            _reported_reported_component__WEBPACK_IMPORTED_MODULE_22__["ReportedComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-            ngx_pagination__WEBPACK_IMPORTED_MODULE_5__["NgxPaginationModule"],
-            _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_11__["ReactiveFormsModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormsModule"],
+            ngx_pagination__WEBPACK_IMPORTED_MODULE_6__["NgxPaginationModule"],
+            _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClientModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_12__["ReactiveFormsModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_12__["FormsModule"],
             _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__["BrowserAnimationsModule"],
             ngx_editor__WEBPACK_IMPORTED_MODULE_4__["NgxEditorModule"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_14__["ToastrModule"].forRoot({
+            ngx_spinner__WEBPACK_IMPORTED_MODULE_5__["NgxSpinnerModule"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_15__["ToastrModule"].forRoot({
                 preventDuplicates: true
             }),
-            angular_6_social_login__WEBPACK_IMPORTED_MODULE_12__["SocialLoginModule"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_9__["RouterModule"].forRoot([
-                { path: 'signup', component: _app_User_signup_signup_component__WEBPACK_IMPORTED_MODULE_10__["SignupComponent"] },
+            angular_6_social_login__WEBPACK_IMPORTED_MODULE_13__["SocialLoginModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_10__["RouterModule"].forRoot([
+                { path: 'signup', component: _app_User_signup_signup_component__WEBPACK_IMPORTED_MODULE_11__["SignupComponent"] },
                 { path: '', redirectTo: 'signup', pathMatch: 'full' },
-                { path: 'login', component: _app_User_log_in_log_in_component__WEBPACK_IMPORTED_MODULE_15__["LogInComponent"] },
-                { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_8__["HomeComponent"], canActivate: [_issue_route_gaurd_service__WEBPACK_IMPORTED_MODULE_22__["IssueRouteGaurdService"]] },
-                { path: 'create', component: _create_issue_create_issue_component__WEBPACK_IMPORTED_MODULE_16__["CreateIssueComponent"], canActivate: [_issue_route_gaurd_service__WEBPACK_IMPORTED_MODULE_22__["IssueRouteGaurdService"]] },
-                { path: ':id/edit', component: _edit_issue_edit_issue_component__WEBPACK_IMPORTED_MODULE_18__["EditIssueComponent"], canActivate: [_issue_route_gaurd_service__WEBPACK_IMPORTED_MODULE_22__["IssueRouteGaurdService"]] },
-                { path: ':id/view', component: _view_issue_view_issue_component__WEBPACK_IMPORTED_MODULE_19__["ViewIssueComponent"], canActivate: [_issue_route_gaurd_service__WEBPACK_IMPORTED_MODULE_22__["IssueRouteGaurdService"]] },
-                { path: 'assign', component: _assigned_issue_assigned_issue_component__WEBPACK_IMPORTED_MODULE_20__["AssignedIssueComponent"], canActivate: [_issue_route_gaurd_service__WEBPACK_IMPORTED_MODULE_22__["IssueRouteGaurdService"]] },
-                { path: 'reported', component: _reported_reported_component__WEBPACK_IMPORTED_MODULE_21__["ReportedComponent"], canActivate: [_issue_route_gaurd_service__WEBPACK_IMPORTED_MODULE_22__["IssueRouteGaurdService"]] }
+                { path: 'login', component: _app_User_log_in_log_in_component__WEBPACK_IMPORTED_MODULE_16__["LogInComponent"] },
+                { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_9__["HomeComponent"], canActivate: [_issue_route_gaurd_service__WEBPACK_IMPORTED_MODULE_23__["IssueRouteGaurdService"]] },
+                { path: 'create', component: _create_issue_create_issue_component__WEBPACK_IMPORTED_MODULE_17__["CreateIssueComponent"], canActivate: [_issue_route_gaurd_service__WEBPACK_IMPORTED_MODULE_23__["IssueRouteGaurdService"]] },
+                { path: ':id/edit', component: _edit_issue_edit_issue_component__WEBPACK_IMPORTED_MODULE_19__["EditIssueComponent"], canActivate: [_issue_route_gaurd_service__WEBPACK_IMPORTED_MODULE_23__["IssueRouteGaurdService"]] },
+                { path: ':id/view', component: _view_issue_view_issue_component__WEBPACK_IMPORTED_MODULE_20__["ViewIssueComponent"], canActivate: [_issue_route_gaurd_service__WEBPACK_IMPORTED_MODULE_23__["IssueRouteGaurdService"]] },
+                { path: 'assign', component: _assigned_issue_assigned_issue_component__WEBPACK_IMPORTED_MODULE_21__["AssignedIssueComponent"], canActivate: [_issue_route_gaurd_service__WEBPACK_IMPORTED_MODULE_23__["IssueRouteGaurdService"]] },
+                { path: 'reported', component: _reported_reported_component__WEBPACK_IMPORTED_MODULE_22__["ReportedComponent"], canActivate: [_issue_route_gaurd_service__WEBPACK_IMPORTED_MODULE_23__["IssueRouteGaurdService"]] }
             ])
         ],
-        providers: [{ provide: angular_6_social_login__WEBPACK_IMPORTED_MODULE_12__["AuthServiceConfig"], useFactory: getAuthServiceConfigs }
+        providers: [{ provide: angular_6_social_login__WEBPACK_IMPORTED_MODULE_13__["AuthServiceConfig"], useFactory: getAuthServiceConfigs }
         ],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
+        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
     })
 ], AppModule);
 
@@ -808,6 +811,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _issue_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../issue.service */ "./src/app/issue.service.ts");
 /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
 /* harmony import */ var _socket_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../socket.service */ "./src/app/socket.service.ts");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm2015/ngx-spinner.js");
+
 
 
 
@@ -817,7 +822,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let CreateIssueComponent = class CreateIssueComponent {
-    constructor(socket, toastr, router, http, service) {
+    constructor(spinner, socket, toastr, router, http, service) {
+        this.spinner = spinner;
         this.socket = socket;
         this.toastr = toastr;
         this.router = router;
@@ -949,6 +955,7 @@ let CreateIssueComponent = class CreateIssueComponent {
             };
             this.service.Upload(data).subscribe((Data) => {
                 let Issuedata = Data['data'];
+                this.spinner.show();
                 this.toastr.success("Issue created successfully");
                 setTimeout(() => {
                     this.router.navigate([`${Issuedata.issueId}/view`]);
@@ -958,6 +965,7 @@ let CreateIssueComponent = class CreateIssueComponent {
     }
 };
 CreateIssueComponent.ctorParameters = () => [
+    { type: ngx_spinner__WEBPACK_IMPORTED_MODULE_8__["NgxSpinnerService"] },
     { type: _socket_service__WEBPACK_IMPORTED_MODULE_7__["SocketService"] },
     { type: ngx_toastr__WEBPACK_IMPORTED_MODULE_6__["ToastrService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },

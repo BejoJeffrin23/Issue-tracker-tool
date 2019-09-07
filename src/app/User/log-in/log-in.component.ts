@@ -88,7 +88,7 @@ export class LogInComponent implements OnInit {
           }
 
         }, (err) => {
-          this.toastr.warning('enter correct password')
+          this.toastr.warning('some error occured')
 
         });
 

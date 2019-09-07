@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import{NgxEditorModule } from 'ngx-editor';
+import{NgxSpinnerModule} from 'ngx-spinner';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -61,6 +62,7 @@ export function getAuthServiceConfigs() {
     FormsModule,
     BrowserAnimationsModule,
     NgxEditorModule,
+    NgxSpinnerModule,
 
     ToastrModule.forRoot({
       preventDuplicates:true

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
  import { IssueService } from '../issue.service';
  import { ToastrService } from 'ngx-toastr';
 import { SocketService } from '../socket.service';
+import{NgxSpinnerService} from 'ngx-spinner'
 
 
 @Component({
@@ -44,7 +45,7 @@ public imagePreview:any;
     ]
 }
 
-  constructor(public socket:SocketService,public toastr:ToastrService, public router:Router, public http:HttpClient,public service:IssueService) { }
+  constructor(public spinner:NgxSpinnerService,public socket:SocketService,public toastr:ToastrService, public router:Router, public http:HttpClient,public service:IssueService) { }
 
   ngOnInit() {
    this.allUsers()
@@ -95,6 +96,7 @@ else{
   }
   this.service.Upload(data).subscribe((Data)=>{
     let Issuedata=Data['data']
+    this.spinner.show()
     this.toastr.success("Issue created successfully")
     setTimeout(()=>{this.router.navigate([`${Issuedata.issueId}/view`])
   },1000)
