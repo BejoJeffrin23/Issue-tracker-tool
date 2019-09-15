@@ -22,7 +22,7 @@ const _port = process.env.PORT || 4003;
  */
 
 
-app.use('/api', proxy({target: 'http://localhost:4001', changeOrigin: true}));
+app.use('/api', proxy({target: 'http://ec2-13-232-157-131.ap-south-1.compute.amazonaws.com/api', changeOrigin: true}));
 
 
 
