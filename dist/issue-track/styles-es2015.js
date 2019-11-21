@@ -639,9 +639,9 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\BEJO JEFFRIN G\Downloads\issue-track\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
-__webpack_require__(/*! C:\Users\BEJO JEFFRIN G\Downloads\issue-track\node_modules\ngx-toastr\toastr.css */"./node_modules/ngx-toastr/toastr.css");
-module.exports = __webpack_require__(/*! C:\Users\BEJO JEFFRIN G\Downloads\issue-track\src\styles.css */"./src/styles.css");
+__webpack_require__(/*! C:\Users\BEJO JEFFRIN G\Downloads\Projects\issue-track\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+__webpack_require__(/*! C:\Users\BEJO JEFFRIN G\Downloads\Projects\issue-track\node_modules\ngx-toastr\toastr.css */"./node_modules/ngx-toastr/toastr.css");
+module.exports = __webpack_require__(/*! C:\Users\BEJO JEFFRIN G\Downloads\Projects\issue-track\src\styles.css */"./src/styles.css");
 
 
 /***/ })
